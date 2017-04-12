@@ -45,15 +45,23 @@ class PlaceViewerViewController: UIViewController, UIScrollViewDelegate {
         print(diffs.first!.timestamp)
         print(diffs.last!.timestamp)
         
-        let filtered = diffs.filter { $0.timestamp == diffs.first!.timestamp }
-        
-        let image = DiffRenderer.shared.generateImage(from: filtered)
-        
-        canvas = UIImageView(image: image)
-        scrollView.addSubview(canvas)
-        scrollView.contentSize = image.size
         scrollView.minimumZoomScale = 0.5
         scrollView.maximumZoomScale = 6.0
+        
+        canvas = UIImageView(frame: CGRect(x: 0, y: 0, width: 1000, height: 1000))
+        scrollView.addSubview(canvas)
+        
+        DiffManager.shared.filteredToFirstFrame { (firstDiffs) in
+            
+            DiffRenderer.shared.generateImage(from: firstDiffs) { [unowned self] image in
+                
+                self.image = image
+                self.view.layoutIfNeeded()
+                
+            }
+            
+        }
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -72,10 +80,34 @@ class PlaceViewerViewController: UIViewController, UIScrollViewDelegate {
         print("changed timestamp to: \(timestampToFilter)")
     }
     
+    var image: UIImage? {
+        get {
+            return canvas.image
+        }
+        
+        set {
+            canvas.image = newValue
+            scrollView.contentSize = newValue?.size ?? .zero
+        }
+    }
+    
+    var isRendering: Bool = false
+    
     func renderSliderDidEndValueChange(sender: UISlider) {
         print("filtering")
-        let filtered = DiffManager.shared.diffs.filter { $0.timestamp <= timestampToFilter }
-        canvas.image = DiffRenderer.shared.generateImage(from: filtered)
+        guard isRendering == false else { return }
+        
+        isRendering = true
+        
+        DiffManager.shared.filtered(to: timestampToFilter) { (filtered) in
+            
+            DiffRenderer.shared.generateImage(from: filtered) { [unowned self] image in
+                self.image = image
+                self.isRendering = false
+            }
+            
+        }
+        
     }
 }
 

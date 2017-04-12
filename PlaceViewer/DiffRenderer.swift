@@ -13,19 +13,27 @@ class DiffRenderer {
     static let shared = DiffRenderer()
     private init() {}
     
-    func generateImage(from diffs: [Diff]) -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: 1000, height: 1000), false, UIScreen.main.scale)
-        let bitmap = UIGraphicsGetCurrentContext()
+    let renderQueue = DispatchQueue(label: "com.corywilhite.PlaceView.renderQueue", qos: .userInitiated)
+    
+    func generateImage(from diffs: [Diff], completion: @escaping (UIImage) -> Void) {
         
-        for diff in diffs {
-            bitmap?.setFillColor(getColor(for: diff).cgColor)
-            bitmap?.fill(CGRect(x: CGFloat(diff.x), y: CGFloat(diff.y), width: 1, height: 1))
+        renderQueue.async {
+            
+            UIGraphicsBeginImageContextWithOptions(CGSize(width: 1000, height: 1000), false, UIScreen.main.scale)
+            let bitmap = UIGraphicsGetCurrentContext()
+            
+            for diff in diffs {
+                bitmap?.setFillColor(getColor(for: diff).cgColor)
+                bitmap?.fill(CGRect(x: CGFloat(diff.x), y: CGFloat(diff.y), width: 1, height: 1))
+            }
+            
+            let image = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            
+            DispatchQueue.main.async { completion(image!) }
+            
         }
         
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        return image!
     }
     
 }

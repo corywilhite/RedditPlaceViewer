@@ -47,6 +47,8 @@ class DiffManager {
     
     var diffs: [Diff] = DiffManager.getDiffs()
     
+    static let firstFrameTimestamp: UInt32 = 1490986860
+    
     static func getDiffs() -> [Diff] {
         
         // using force unwraps here because we don't want to try to recover from file errors here. all files and data is expected to be in the right place
@@ -79,6 +81,27 @@ class DiffManager {
         
         return diffs
             
+    }
+    
+    let workQueue = DispatchQueue(label: "com.corywilhite.PlaceView.workQueue", qos: .userInitiated)
+    
+    func filteredToFirstFrame(completion: @escaping ([Diff]) -> Void) {
+        
+        filtered(
+            to: DiffManager.firstFrameTimestamp,
+            completion: completion
+        )
+        
+    }
+    
+    func filtered(to timestamp: UInt32, completion: @escaping ([Diff]) -> Void) {
+        
+        workQueue.async { [unowned self] in
+            
+            completion(self.diffs.filter { $0.timestamp <= timestamp })
+            
+        }
+        
     }
     
     func timestampPartitionedDiffs() -> [UInt32: [Diff]] {
