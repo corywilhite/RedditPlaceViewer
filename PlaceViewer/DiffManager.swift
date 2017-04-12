@@ -1,5 +1,5 @@
 //
-//  PlaceDiff.swift
+//  DiffManager.swift
 //  PlaceViewer
 //
 //  Created by Cory Wilhite on 4/11/17.
@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Darwin
 import Zip
 
 struct Diff {
@@ -70,7 +69,8 @@ class DiffManager {
         }
         
         let diffs = data.withUnsafeMutableBytes { (diffPtrStart: UnsafeMutablePointer<Diff>) -> [Diff] in
-            let diffsCount = (data.endIndex - data.startIndex) / 16
+            let diffSize = MemoryLayout<Diff>.size
+            let diffsCount = (data.endIndex - data.startIndex) / diffSize
             let buffer = UnsafeMutableBufferPointer(start: diffPtrStart, count: diffsCount)
             return Array(buffer)
         }
