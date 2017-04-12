@@ -47,7 +47,7 @@ class PlaceViewerViewController: UIViewController, UIScrollViewDelegate {
         
         let filtered = diffs.filter { $0.timestamp == diffs.first!.timestamp }
         
-        let image = generateImage(from: filtered)
+        let image = DiffRenderer.shared.generateImage(from: filtered)
         
         canvas = UIImageView(image: image)
         scrollView.addSubview(canvas)
@@ -75,22 +75,7 @@ class PlaceViewerViewController: UIViewController, UIScrollViewDelegate {
     func renderSliderDidEndValueChange(sender: UISlider) {
         print("filtering")
         let filtered = DiffManager.shared.diffs.filter { $0.timestamp <= timestampToFilter }
-        canvas.image = generateImage(from: filtered)
-    }
-    
-    func generateImage(from diffs: [Diff]) -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: 1000, height: 1000), false, UIScreen.main.scale)
-        let bitmap = UIGraphicsGetCurrentContext()
-        
-        for diff in diffs {
-            bitmap?.setFillColor(getColor(for: diff).cgColor)
-            bitmap?.fill(CGRect(x: CGFloat(diff.x), y: CGFloat(diff.y), width: 1, height: 1))
-        }
-        
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        return image!
+        canvas.image = DiffRenderer.shared.generateImage(from: filtered)
     }
 }
 

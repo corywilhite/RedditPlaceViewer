@@ -16,6 +16,7 @@
 		7ADB41011E9DD951002CC24D /* HexColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADB41001E9DD951002CC24D /* HexColor.swift */; };
 		7ADB41051E9DDEC9002CC24D /* PlaceViewerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7ADB41041E9DDEC9002CC24D /* PlaceViewerViewController.xib */; };
 		7ADB41091E9EAFBC002CC24D /* diffs.bin.zip in Resources */ = {isa = PBXBuildFile; fileRef = 7ADB41081E9EAFBC002CC24D /* diffs.bin.zip */; };
+		7ADB410B1E9EBD88002CC24D /* DiffRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADB410A1E9EBD88002CC24D /* DiffRenderer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		7ADB41001E9DD951002CC24D /* HexColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexColor.swift; sourceTree = "<group>"; };
 		7ADB41041E9DDEC9002CC24D /* PlaceViewerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaceViewerViewController.xib; sourceTree = "<group>"; };
 		7ADB41081E9EAFBC002CC24D /* diffs.bin.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = diffs.bin.zip; sourceTree = "<group>"; };
+		7ADB410A1E9EBD88002CC24D /* DiffRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiffRenderer.swift; sourceTree = "<group>"; };
 		7CE8A16653A8C246D8BAB8D2 /* Pods-PlaceViewer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlaceViewer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PlaceViewer/Pods-PlaceViewer.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -89,6 +91,7 @@
 				7ADB40EC1E9DD590002CC24D /* PlaceViewerViewController.swift */,
 				7ADB41041E9DDEC9002CC24D /* PlaceViewerViewController.xib */,
 				7ADB40FE1E9DD5C6002CC24D /* DiffManager.swift */,
+				7ADB410A1E9EBD88002CC24D /* DiffRenderer.swift */,
 				7ADB41001E9DD951002CC24D /* HexColor.swift */,
 				7ADB40F11E9DD590002CC24D /* Assets.xcassets */,
 				7ADB40F31E9DD590002CC24D /* LaunchScreen.storyboard */,
@@ -224,6 +227,7 @@
 			files = (
 				7ADB40ED1E9DD590002CC24D /* PlaceViewerViewController.swift in Sources */,
 				7ADB41011E9DD951002CC24D /* HexColor.swift in Sources */,
+				7ADB410B1E9EBD88002CC24D /* DiffRenderer.swift in Sources */,
 				7ADB40FF1E9DD5C6002CC24D /* DiffManager.swift in Sources */,
 				7ADB40EB1E9DD590002CC24D /* AppDelegate.swift in Sources */,
 			);

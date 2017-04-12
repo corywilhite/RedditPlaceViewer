@@ -80,6 +80,24 @@ class DiffManager {
         return diffs
             
     }
+    
+    func timestampPartitionedDiffs() -> [UInt32: [Diff]] {
+        
+        var partition: [UInt32: [Diff]] = [:]
+        
+        for diff in diffs {
+            
+            if partition[diff.timestamp] == nil {
+                partition[diff.timestamp] = [diff]
+            } else {
+                partition[diff.timestamp]?.append(diff)
+            }
+            
+        }
+        
+        return partition
+        
+    }
 }
 
 
