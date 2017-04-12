@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PlaceViewerViewController" customModule="PlaceViewer" customModuleProvider="target">
+            <connections>
+                <outlet property="renderSlider" destination="T14-nu-6Ww" id="SJN-u4-tfK"/>
+                <outlet property="scrollView" destination="EH2-6Q-Qrx" id="yhX-YS-KEe"/>
+                <outlet property="view" destination="iN0-l3-epB" id="H3c-7z-Bmo"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EH2-6Q-Qrx">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="690"/>
+                </scrollView>
+                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1490986860" minValue="1490986860" maxValue="1491238711" translatesAutoresizingMaskIntoConstraints="NO" id="T14-nu-6Ww">
+                    <rect key="frame" x="6" y="698" width="402" height="31"/>
+                </slider>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="T14-nu-6Ww" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="Bxx-ev-4oo"/>
+                <constraint firstAttribute="trailing" secondItem="T14-nu-6Ww" secondAttribute="trailing" constant="8" id="Hbb-Dt-nul"/>
+                <constraint firstItem="EH2-6Q-Qrx" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="JBk-Sb-TPt"/>
+                <constraint firstItem="T14-nu-6Ww" firstAttribute="top" secondItem="EH2-6Q-Qrx" secondAttribute="bottom" constant="8" id="d6t-Wl-Cy1"/>
+                <constraint firstItem="EH2-6Q-Qrx" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="fEf-dH-xdq"/>
+                <constraint firstAttribute="trailing" secondItem="EH2-6Q-Qrx" secondAttribute="trailing" id="nf9-Dp-oed"/>
+                <constraint firstAttribute="bottom" secondItem="T14-nu-6Ww" secondAttribute="bottom" constant="8" id="qAZ-YI-L9g"/>
+            </constraints>
+        </view>
+    </objects>
+</document>
