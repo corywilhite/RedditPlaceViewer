@@ -49,14 +49,16 @@ class DiffManager {
     
     static func getDiffs() -> [Diff] {
         
-        // using force unwraps here because we don't want to try to recover from file errors here. all the files and data should be in the right place
+        // using force unwraps here because we don't want to try to recover from file errors here. all files and data is expected to be in the right place
         
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         
         let path = documentsDirectory.appendingPathComponent("diffs.bin")
         
+        // if the diffs.bin file has already been unzipped, we'll get data here
         var data: Data! = try? Data(contentsOf: path)
         
+        // if not then unzip the file from the bundle into the documentsDirectory
         if data == nil {
         
             let filePath = Bundle.main.url(forResource: "diffs", withExtension: "bin.zip")!
