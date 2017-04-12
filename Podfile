@@ -7,4 +7,5 @@ target 'PlaceViewer' do
 
   # Pods for PlaceViewer
   pod 'Zip'
+  pod 'NVActivityIndicatorView'
 end

@@ -1,12 +1,15 @@
 PODS:
+  - NVActivityIndicatorView (3.6.0)
   - Zip (0.7.0)
 
 DEPENDENCIES:
+  - NVActivityIndicatorView
   - Zip
 
 SPEC CHECKSUMS:
+  NVActivityIndicatorView: c7c1c4300b418bd9ed06459e78d4df859ddbe31f
   Zip: e34513299ac38c0686d5b24504da7ce343799ab9
 
-PODFILE CHECKSUM: 919ecab44e8fa9561f5d5f1ca193268849cb0766
+PODFILE CHECKSUM: 632e3a93705004304f7e03881f7b7ac87fb3fccc
 
 COCOAPODS: 1.2.0
